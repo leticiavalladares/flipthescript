@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static_style', path='style.css')}}">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><img src="static/css/components/logo.png"></a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="">Add article</a></li>
+                <li><a href="#" class="">About the project</a></li>
+                <li class="opener"><a href=# class="">Links</a>
+                    <div class="dropdown">
+                        <a href=# target="_blank">LinkedIn</a>
+                        <a href=# target="_blank">TechLabs</a>
+                    </div>
+                </li>
+                <li><a href="#" class=""></a></li>
+            </ul>
+        </nav>        
+        <br />
+        <br />
+        {% if request.path == '/article-table/' %}
+            <h2>Articles Table</h2>
+        {% endif %}
+        {% if request.path == '/author-table/' %}
+            <h2>Authors Table</h2>
+        {% endif %}
+        <br /> 
+        <table class="align">
+            <tr>
+                {% if request.path == '/article-table/' %}
+                    <th>URL</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Topic</th>
+                    <th>Headline</th>
+                {% endif %}
+ <!--               {% if request.path == '/author-table/' %}
+                    <th>Source Name</th>
+                    <th>Author's Name</th>
+                    <th>Author's Gender</th>
+                {% endif %}            
+                {% for movie in movies_data if movie[3] is not number %}
+                    {% for movie in movies_data if movie[3] is not none %}
+                        {% if loop.first %}
+                        <th>Director</th>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %} -->
+            </tr>
+            {% for article in article_data %}            
+            <tr>
+                <td>{{article[1]}}</td>
+                <td>{{article[2]}}</td>
+                <td>{{article[3]}}</td>
+                <td>{{article[4]}}</td>
+                <td>{{article[5]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/" class="center"><p><< Go back</p></a>
+    </body>
+</html>

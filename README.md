@@ -20,10 +20,8 @@ mysql -h 127.0.0.1 -h <RDS_ENDPOINT> -u root -p
 5.
 
 ````
--- Create database
 CREATE DATABASE flipthescript; 
 
--- Select database
 USE flipthescript;
 
 CREATE TABLE `analysis` (
@@ -64,7 +62,7 @@ CREATE TABLE `author` (
   `source_name` varchar(25) NOT NULL,
   `author_name` varchar(25) NOT NULL,
   `author_gender` char(1) NOT NULL
-)
+);
 
 INSERT INTO `author` (`author_id`, `source_name`, `author_name`, `author_gender`) VALUES
 (1, 'bbc news', 'bbc news', 'n'),
@@ -84,7 +82,7 @@ CREATE TABLE `grammar` (
   `adj_conn_masc` int(11) DEFAULT NULL,
   `title_fem` int(11) DEFAULT NULL,
   `title_masc` int(11) DEFAULT NULL
-)
+);
 
 INSERT INTO `grammar` (`grammar_id`, `pers_pron_fem`, `pers_pron_masc`, `deter_pron_fem`, `deter_pron_masc`, `noun_fem`, `noun_masc`, `adj_conn_fem`, `adj_conn_masc`, `title_fem`, `title_masc`) VALUES
 (1, 1, 4, 0, 11, 0, 4, 0, 0, 0, 7),
