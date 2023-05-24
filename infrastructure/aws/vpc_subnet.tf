@@ -1,6 +1,7 @@
 resource "aws_vpc" "vpc" {
-  cidr_block       = var.aws_vpc_cidr_block
-  instance_tenancy = "default"
+  cidr_block           = var.aws_vpc_cidr_block
+  instance_tenancy     = "default"
+  enable_dns_hostnames = true
 
   tags = {
     Name = "vpc"
@@ -51,10 +52,10 @@ resource "aws_db_subnet_group" "db_sg" {
   }
 }
 
-data "aws_secretsmanager_secret" "movie_db_secret"{
-  name = "movie-db-password"
+data "aws_secretsmanager_secret" "flipthescript_db_secret"{
+  name = "flipthescript-db-password"
 }
 
-data "aws_secretsmanager_secret_version" "movie_db_pw" {
-  secret_id = data.aws_secretsmanager_secret.movie_db_secret.id
+data "aws_secretsmanager_secret_version" "flipthescript_db_pw" {
+  secret_id = data.aws_secretsmanager_secret.flipthescript_db_secret.id
 }

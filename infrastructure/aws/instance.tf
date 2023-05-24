@@ -16,8 +16,8 @@ resource "aws_instance" "pub_server" {
   key_name               = var.my_keypair
   user_data = templatefile("${path.module}/user-data.sh.tpl",
     {
-      db_endpoint = aws_db_instance.movie_db.address,
-      db_password = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.movie_db_pw.secret_string))["movie_db_password"]
+      db_endpoint = aws_db_instance.flipthescript_db.address,
+      db_password = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.flipthescript_db_pw.secret_string))["flipthescript-db-password"]
   })
 
   tags = {

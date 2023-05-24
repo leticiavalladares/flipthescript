@@ -42,8 +42,8 @@ resource "aws_security_group" "bastion_host_sg" {
 }
 
 #tfsec:ignore:aws-ec2-no-public-egress-sgr
-resource "aws_security_group" "db_movie_sg" {
-  name        = "db_movie_sg"
+resource "aws_security_group" "db_flipthescript_sg" {
+  name        = "db_flipthescript_sg"
   description = "Securtiy group for MySQL Database"
   vpc_id      = aws_vpc.vpc.id
 
