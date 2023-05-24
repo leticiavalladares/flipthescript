@@ -75,3 +75,7 @@ variable "db_storage" {
 variable "my_ip" {
   description = "IP for ssh"
 }
+
+variable "secret_arn" { # Created in the console for security reasons
+  description = "Secret ARN for MySQL db"
+}

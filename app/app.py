@@ -1,25 +1,25 @@
 from flask import Flask, render_template, send_from_directory, request
 from flask_mysqldb import MySQL
 import json
-from secrets import get_secret
+#from secrets import get_secret
 
 
 app = Flask("flipthescript")
 
 #------- AWS RDS -------
-db_config = get_secret('flipthescript', region_name='eu-central-1')
+#db_config = get_secret('flipthescript', region_name='eu-central-1')
 
-app.config["MYSQL_PASSWORD"]  = db_config["MYSQL_PASSWORD"]
-app.config["MYSQL_HOST"]      = db_config["MYSQL_HOST"]
-app.config["MYSQL_USER"]      = db_config['MYSQL_USER']
-app.config["MYSQL_DB"]        = db_config['MYSQL_DB']
+#app.config["MYSQL_PASSWORD"]  = db_config["MYSQL_PASSWORD"]
+#app.config["MYSQL_HOST"]      = db_config["MYSQL_HOST"]
+#app.config["MYSQL_USER"]      = db_config['MYSQL_USER']
+#app.config["MYSQL_DB"]        = db_config['MYSQL_DB']
 #---------------------------------------------------------
 
 #------- Local ----------
-#app.config["MYSQL_PASSWORD"]  = ''
-#app.config["MYSQL_HOST"]      = '127.0.0.1'
-#app.config["MYSQL_USER"]      = ''
-#app.config["MYSQL_DB"]        = 'flipthescript'
+app.config["MYSQL_PASSWORD"]  = ''
+app.config["MYSQL_HOST"]      = '127.0.0.1'
+app.config["MYSQL_USER"]      = ''
+app.config["MYSQL_DB"]        = 'flipthescript'
 #---------------------------------------------------------
 
 mysql = MySQL(app)
@@ -48,4 +48,4 @@ def article_details(article_id):
     return render_template("article.html", article_data=data)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1")
+    app.run(host="0.0.0.0")

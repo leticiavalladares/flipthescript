@@ -1,13 +1,19 @@
-FROM python:3.8-alpine
-
-COPY ./requirements.txt /app/requirements.txt
+FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN apt-get update && \
+    apt-get install -y \
+    bash \
+    build-essential \
+    cmake \  
+    curl \
+    git \
+    libmariadb-dev-compat \
+    libmariadb-dev && \ 
+    pip3 install -r requirements.txt
 
-COPY . /app
+COPY . .
 
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py"]
+CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]

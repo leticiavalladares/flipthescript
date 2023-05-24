@@ -1,12 +1,19 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
+FROM python:3.8-slim-buster
 
-RUN apk --update add bash nano 
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add --no-cache mariadb-dev
+WORKDIR /app
 
-ENV STATIC_URL /static
-ENV STATIC_PATH /var/www/app/static
+COPY requirements.txt requirements.txt
+RUN apt-get update && \
+    apt-get install -y \
+    bash \
+    build-essential \
+    cmake \  
+    curl \
+    git \
+    libmariadb-dev-compat \
+    libmariadb-dev && \ 
+    pip3 install -r requirements.txt
 
-COPY ./requirements.txt /var/www/requirements.txt
-RUN pip install -r /var/www/requirements.txt
+COPY . .
+
+CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
