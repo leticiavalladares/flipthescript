@@ -15,7 +15,7 @@ sudo apt-get install \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker.io -y
-git clone --branch dev https://github.com/leticiavalladares/flipthescript.git ~/flipthescript
+git clone --branch main https://github.com/leticiavalladares/flipthescript.git ~/flipthescript
 cd ~/flipthescript/app
 sudo docker build -t flipthescript-mgmt .
 
