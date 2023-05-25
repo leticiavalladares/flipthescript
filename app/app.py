@@ -41,7 +41,7 @@ def static_style(path):
 @app.route("/article/<int:article_id>")
 def article_details(article_id):
     cursor = mysql.connection.cursor()
-    query_string = "SELECT * FROM article, author, analysis WHERE article.id = {0} AND author.author_id = {0} AND analysis.analysis_id = {0}".format(article_id)
+    query_string = "SELECT * FROM article INNER JOIN author ON article.author_id = author.author_id INNER JOIN analysis ON article.analysis_id = analysis.analysis_id WHERE article.id = {0};".format(article_id)
     cursor.execute(query_string)  
     data = cursor.fetchall()
     cursor.close()

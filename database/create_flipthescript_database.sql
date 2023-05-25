@@ -1,4 +1,4 @@
-
+DROP DATABASE IF EXISTS flipthescript;
 
 CREATE DATABASE flipthescript; 
 
@@ -17,7 +17,9 @@ INSERT INTO `analysis` (`analysis_id`, `words_count`, `words_converted`, `words_
 (1, 279, 27, 11, '9.677', '3.943'),
 (2, 504, 5, 3, '0.992', '0.595'),
 (3, 401, 0, 0, '0.000', '0.000'),
-(4, 0, NULL, NULL, NULL, NULL);
+(4, 518, 10, NULL, '1.931', NULL),
+(5, 482, 21, NULL, '4.357', NULL);
+
 
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
@@ -35,12 +37,15 @@ CREATE TABLE `article` (
 INSERT INTO `article` (`id`, `author_id`, `url`, `title`, `date`, `topic`, `headline`, `analysis_id`, `grammar_id`, `rt_grammar_id`) VALUES
 (1, 1, 'https://www.bbc.com/news/world-us-canada-55370919', 'US judge says parents owe son over trashed porn collection', '2020-12-18', 'local news', 'A US judge in Michigan has ruled that a 42-year-old man can seek compensation from his parents for destroying his pornography collection.', 1, 1, 1),
 (2, 2, 'https://www.bbc.com/news/world-europe-55371102', 'Covid-19 pandemic: Sweden reverses face mask guidelines for public transport', '2020-12-18', 'health', "Sweden\'s government is recommending wearing face masks on public transport during the rush hour, reversing its earlier Covid guidance.", 2, 2, 2),
-(3, 3, 'https://www.dw.com/en/switzerland-same-sex-marriage-transgender-rights-move-a-step-forward/a-55994393', "Switzerland: Same-sex marriage, transgender rights move a step forward", '2020-12-18', 'politics', 'Switzerland has lagged behind other Western European countries on LGBT+ rights. A progressive rights bill may still have to face a public vote before becoming law.', 3, 3, 3);
+(3, 3, 'https://www.dw.com/en/switzerland-same-sex-marriage-transgender-rights-move-a-step-forward/a-55994393', "Switzerland: Same-sex marriage, transgender rights move a step forward", '2020-12-18', 'politics', 'Switzerland has lagged behind other Western European countries on LGBT+ rights. A progressive rights bill may still have to face a public vote before becoming law.', 3, 3, 3),
+(4, 4, 'https://www.irishtimes.com/life-and-style/food-and-drink/it-s-the-most-eagerly-anticipated-sandwich-of-the-year-here-s-how-to-make-yours-epic-1.4381001', "It's the most eagerly anticipated sandwich of the year. Here's how to make yours epic", '2020-12-24', 'food and drinks', "There's more to the Christmas sandwich than turkey and ham, as these expert makers explain", 4, 4, 4),
+(5, 5, 'https://abcnews.go.com/Entertainment/wireStory/queen-elizabeth-pays-tribute-kindness-strangers-74909445', "Queen Elizabeth pays tribute to 'kindness of strangers'", '2020-12-25', 'people', "Queen Elizabeth II has delivered a heartfelt message of hope in her Christmas address, praising the 'indomitable spirit' of those who have risen 'magnificently' to the challenges of the pandemic", 5, 5, 5);
+
 
 CREATE TABLE `author` (
   `author_id` int(11) NOT NULL,
   `source_name` varchar(25) NOT NULL,
-  `author_name` varchar(25) NOT NULL,
+  `author_name` varchar(30) NOT NULL,
   `author_gender` char(1) NOT NULL
 );
 
@@ -48,7 +53,8 @@ INSERT INTO `author` (`author_id`, `source_name`, `author_name`, `author_gender`
 (1, 'bbc news', 'bbc news', 'n'),
 (2, 'bbc news', 'bbc news', 'n'),
 (3, 'deutsche welle', 'reuters/afp', 'n'),
-(4, '', '', '');
+(4, 'the irish times', 'Ali Dunworth', 'f'),
+(5, 'abc news', 'PAN PYLAS Associated Press', 'm');
 
 CREATE TABLE `grammar` (
   `grammar_id` int(11) NOT NULL,
@@ -68,7 +74,8 @@ INSERT INTO `grammar` (`grammar_id`, `pers_pron_fem`, `pers_pron_masc`, `deter_p
 (1, 1, 4, 0, 11, 0, 4, 0, 0, 0, 7),
 (2, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2),
 (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 0, 6, 0, 4, 0, 0, 0, 0, 0, 0),
+(5, 4, 0, 8, 0, 7, 2, 0, 0, 0, 0);
 
 CREATE TABLE `rt_grammar` (
   `rt_grammar_id` int(11) NOT NULL,
@@ -92,7 +99,8 @@ INSERT INTO `rt_grammar` (`rt_grammar_id`, `rt_pers_pron_fem`, `rt_pers_pron_mas
 (1, 4, 15, 0, 41, 0, 15, 0, 0, 0, 26, 15, 0, 26, 7),
 (2, 0, 40, 0, 0, 0, 20, 0, 0, 0, 40, 20, 0, 40, 10),
 (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 0, 60, 0,	40,	0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 9, 0, 38, 0, 33, 10, 0, 0, 0, 0, 43, 0, 0, 7);
 
 CREATE TABLE `test` (
   `id` int(11) DEFAULT NULL,
