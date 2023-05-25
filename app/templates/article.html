@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="{{url_for('static_style', path='css/style.css')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static_style', path='css/components/icon.svg')}}">
     </head>
     <body>
         <nav>
             <ul>
                 <li><img src="{{ url_for('static_style', path='css/components/logo.png') }}"></a></li>
-                <li><a href="hello.html">Home</a></li>
-                <li><a href="">Add article</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Add article</a></li>
                 <li><a href="#" class="">Flip it!</a></li>
                 <li class="opener"><a href=# class="">About us</a>
                     <div class="dropdown">

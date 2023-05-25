@@ -35,3 +35,6 @@ telnet: connect to address 10.0.2.54: Operation timed out
 telnet: Unable to connect to remote host
 
 docker run --name flipthescript-db -p 3306:3306 -v ~/src/talent-academy/mysql_databases/flipthescript_db:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=<PASSWORD> -d mysql:latest
+
+SELECT VERSION();  #mysql
+8.0.30 
