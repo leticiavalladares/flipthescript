@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# INSTALL GIT AND MYSQL
 sudo apt-get update
 sudo apt-get install git mysql-client -y
 sudo apt-get install \
@@ -25,5 +24,4 @@ mysql -h ${db_endpoint} -u root -p${db_password} < ~/flipthescript/database/crea
 sudo sed -i "s/ENDPOINT_PLACEHOLDER/${db_endpoint}/g" ~/flipthescript/app/app.py
 sudo sed -i "s/PASSWORD_PLACEHOLDER/${db_password}/g" ~/flipthescript/app/app.py
 
-# RUN MY CONTAINER - FLASK APP RUNNNING
 sudo docker run -d -p 80:80 --name=flipthescript-mgmt -v ~/flipthescript/app:/app flipthescript-mgmt

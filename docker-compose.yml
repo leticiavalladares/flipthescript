@@ -1,0 +1,16 @@
+services:
+  app:
+    build: ./app
+    links:
+      - database
+    ports:
+      - "5000:5000"
+  database:
+    image: mysql:8.0.30
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: <HERE_GOES_THE_PASSWORD>
+    volumes:
+      - ~/src/talent-academy/mysql_databases/flipthescript_db:/var/lib/mysql
+    

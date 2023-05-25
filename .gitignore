@@ -4,7 +4,7 @@
 *.terraform.lock.hcl.*
 .terraform.lock.hcl
 .DS_Store
-docker-compose.yml
+# docker-compose.yml
 
 # .tfstate files
 *.tfstate
