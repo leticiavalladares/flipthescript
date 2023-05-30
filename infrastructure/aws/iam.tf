@@ -1,6 +1,7 @@
 # Trust policy
 data "aws_iam_policy_document" "instance_role_policy" {
   statement {
+    effect = "Allow"
     actions = ["sts:AssumeRole"]
 
     principals {
@@ -39,7 +40,7 @@ resource "aws_secretsmanager_secret_policy" "secrets_manager_attachment" {
 
 resource "aws_iam_instance_profile" "instances_profile" {
   name_prefix = "servers-profile-${data.aws_region.current_region.name}-"
-  path        = "/home/ubuntu/"
+#  path        = "/home/ubuntu/"
   role        = aws_iam_role.instance_role.name
 
   tags = {

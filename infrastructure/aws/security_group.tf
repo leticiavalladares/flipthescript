@@ -21,6 +21,14 @@ resource "aws_security_group" "bastion_host_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "Allow Flask into the EC2"
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = [join("/", [var.my_ip, "32"])]
+  }
+
   egress {
     description = "Allow access to the world"
     from_port   = 0

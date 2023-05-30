@@ -24,4 +24,4 @@ mysql -h ${db_endpoint} -u root -p${db_password} < ~/flipthescript/database/crea
 sudo sed -i "s/ENDPOINT_PLACEHOLDER/${db_endpoint}/g" ~/flipthescript/app/app.py
 sudo sed -i "s/PASSWORD_PLACEHOLDER/${db_password}/g" ~/flipthescript/app/app.py
 
-sudo docker run -d -p 80:80 --name=flipthescript-mgmt -v ~/flipthescript/app:/app flipthescript-mgmt
+sudo docker run -d -p 80:5000 --name=flipthescript-mgmt -v ~/flipthescript/app:/app flipthescript-mgmt
