@@ -9,6 +9,10 @@ resource "aws_route_table" "rt_pub_subnet" {
   tags = {
     Name = "rt-pub-subnet"
   }
+  
+  lifecycle {
+    ignore_changes = [route]
+  }
 }
 
 resource "aws_route_table" "rt_priv_subnet_1" {
@@ -22,6 +26,10 @@ resource "aws_route_table" "rt_priv_subnet_1" {
   tags = {
     Name = "rt-priv-subnet-1"
   }
+  
+  lifecycle {
+    ignore_changes = [route]
+  }
 }
 
 resource "aws_route_table" "rt_priv_subnet_2" {
@@ -34,6 +42,10 @@ resource "aws_route_table" "rt_priv_subnet_2" {
 
   tags = {
     Name = "rt-priv-subnet-2"
+  }
+
+  lifecycle {
+    ignore_changes = [route]
   }
 }
 
