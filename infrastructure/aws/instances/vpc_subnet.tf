@@ -9,9 +9,9 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_subnet" "priv_subnet_1" {
-  vpc_id                = aws_vpc.vpc.id
-  cidr_block            = var.aws_priv_subnet_cidr_block_1
-  availability_zone     = "eu-central-1a"
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = var.aws_priv_subnet_cidr_block_1
+  availability_zone = "eu-central-1a"
 
   tags = {
     Name = "priv-subnet-2"
@@ -19,9 +19,9 @@ resource "aws_subnet" "priv_subnet_1" {
 }
 
 resource "aws_subnet" "priv_subnet_2" {
-  vpc_id                = aws_vpc.vpc.id
-  cidr_block            = var.aws_priv_subnet_cidr_block_2
-  availability_zone     = "eu-central-1b"
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = var.aws_priv_subnet_cidr_block_2
+  availability_zone = "eu-central-1b"
 
   tags = {
     Name = "priv-subnet-1"
@@ -42,7 +42,7 @@ resource "aws_subnet" "pub_subnet" {
 resource "aws_db_subnet_group" "db_sg" {
   name        = "database-subnet-group"
   description = "Subnets where RDS will be deployed"
-  subnet_ids  = [
+  subnet_ids = [
     aws_subnet.priv_subnet_1.id,
     aws_subnet.priv_subnet_2.id
   ]
@@ -52,7 +52,7 @@ resource "aws_db_subnet_group" "db_sg" {
   }
 }
 
-data "aws_secretsmanager_secret" "flipthescript_db_secret"{
+data "aws_secretsmanager_secret" "flipthescript_db_secret" {
   name = "flipthescript-db-password"
 }
 

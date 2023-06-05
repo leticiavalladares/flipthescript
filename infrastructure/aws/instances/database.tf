@@ -1,5 +1,5 @@
 resource "aws_db_instance" "flipthescript_db" {
-  allocated_storage      = var.db_storage      // 10 GiB 
+  allocated_storage      = var.db_storage // 10 GiB 
   db_name                = var.db_name
   engine                 = var.db_engine
   engine_version         = var.db_engine_version
@@ -10,11 +10,11 @@ resource "aws_db_instance" "flipthescript_db" {
   db_subnet_group_name   = aws_db_subnet_group.db_sg.name
   vpc_security_group_ids = [aws_security_group.db_flipthescript_sg.id]
 
-tags = {
+  tags = {
     Name = "flipthescript-db"
-}
+  }
 
-depends_on = [
+  depends_on = [
     aws_db_subnet_group.db_sg,
     aws_vpc.vpc,
     aws_subnet.pub_subnet,
@@ -22,5 +22,5 @@ depends_on = [
     aws_subnet.priv_subnet_2,
     aws_security_group.bastion_host_sg,
     aws_security_group.db_flipthescript_sg
-]
+  ]
 }

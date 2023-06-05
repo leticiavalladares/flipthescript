@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "ecr_repo" {
   name                 = "flipthescript"
-  image_tag_mutability = "MUTABLE"  
+  image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
     scan_on_push = true
@@ -12,9 +12,9 @@ resource "aws_ecr_repository" "ecr_repo" {
 }
 
 resource "aws_ecs_task_definition" "task_def" {
-  family                = "flipthescript-definition"
-  execution_role_arn    = aws_iam_role.ecs_role.arn
-  task_role_arn         = aws_iam_role.ecs_role.arn
+  family             = "flipthescript-definition"
+  execution_role_arn = aws_iam_role.ecs_role.arn
+  task_role_arn      = aws_iam_role.ecs_role.arn
   container_definitions = jsonencode([
     {
       name      = "flipthescript"

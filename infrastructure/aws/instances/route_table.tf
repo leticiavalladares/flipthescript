@@ -9,7 +9,7 @@ resource "aws_route_table" "rt_pub_subnet" {
   tags = {
     Name = "rt-pub-subnet"
   }
-  
+
   lifecycle {
     ignore_changes = [route]
   }
@@ -26,7 +26,7 @@ resource "aws_route_table" "rt_priv_subnet_1" {
   tags = {
     Name = "rt-priv-subnet-1"
   }
-  
+
   lifecycle {
     ignore_changes = [route]
   }
@@ -50,16 +50,16 @@ resource "aws_route_table" "rt_priv_subnet_2" {
 }
 
 resource "aws_route_table_association" "pub_assoc" {
-  subnet_id     = aws_subnet.pub_subnet.id
+  subnet_id      = aws_subnet.pub_subnet.id
   route_table_id = aws_route_table.rt_pub_subnet.id
 }
 
 resource "aws_route_table_association" "priv_assoc_1" {
-  subnet_id     = aws_subnet.priv_subnet_1.id
+  subnet_id      = aws_subnet.priv_subnet_1.id
   route_table_id = aws_route_table.rt_priv_subnet_1.id
 }
 
 resource "aws_route_table_association" "priv_assoc_2" {
-  subnet_id     = aws_subnet.priv_subnet_2.id
+  subnet_id      = aws_subnet.priv_subnet_2.id
   route_table_id = aws_route_table.rt_priv_subnet_2.id
 }
