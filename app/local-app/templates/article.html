@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static_style', path='css/style.css')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static_style', path='css/components/icon.svg')}}">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><img src="{{ url_for('static_style', path='css/components/logo.png') }}"></a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Add article</a></li>
+                <li><a href="#" class="">Flip it!</a></li>
+                <li class="opener"><a href=# class="">About us</a>
+                    <div class="dropdown">
+                        <a href=# target="_blank">LinkedIn</a>
+                        <a href=# target="_blank">TechLabs</a>
+                    </div>
+                </li>
+                <li><a href="#" class=""></a></li>
+            </ul>
+        </nav>       
+        <br />
+        <br /> 
+        <div id="container-details">
+            <a href="/" class="go-back">&#10094;&#10094;  Go Back</a>
+            <br />
+            <br />
+            {% for article in article_data %}
+            <div class="post-group">
+                <p class="tag">ID:</p><p>{{article[0]}}</p>
+                <p class="tag">Source:</p><p>{{article[11].title()}}</p>
+                <p class="tag">Author's Name:</p><p>{{article[12].title()}}</p>
+                <p class="tag">Author's Gender:</p>
+                {% if article[13] == 'n' %}<p>Not specified</p>{% endif %}</p>
+                {% if article[13] == 'm' %}<p>Male</p>{% endif %}</p>
+                {% if article[13] == 'f' %}<p>Female</p>{% endif %}</p>
+                <p class="tag">URL:</p><p><a href="{{ article[2] }}"></a>{{article[2]}}</p>
+                <p class="tag">Title:</p><p>{{article[3]}}</p>
+                <p class="tag">Date:</p><p>{{article[4].strftime("%B %d, %Y")}}</p>
+                <p class="tag">Topic:</p><p>{{article[5].title()}}</p>
+                <p class="tag">Headline:</p><p>{{article[6]}}</p>
+                <p class="tag">Counted Words:</p><p>{{article[15]}}</p>
+                <p class="tag">Converted Words:</p><p>{{article[16]}}</p>
+                <br />
+                <br />
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/" class="center"><p>&#10094;&#10094; Go back</p></a>
+    </body>
+</html>

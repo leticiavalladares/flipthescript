@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip the Script</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static_style', path='css/components/icon.svg')}}">
+<link rel="stylesheet" href="{{ url_for('static_style', path='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="{{ url_for('static_style', path='css/components/logo.png') }}"></a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Add article</a></li>
+            <li><a href="#" class="">Flip it!</a></li>
+            <li class="opener"><a href=# class="">About us</a>
+                <div class="dropdown">
+                    <a href=# target="_blank">LinkedIn</a>
+                    <a href=# target="_blank">TechLabs</a>
+                </div>
+            </li>
+            <li><a href="#" class=""></a></li>
+        </ul>
+    </nav>
+    <div id="container">
+        <h1 id=first-title>Articles</h1>
+        {% for article in article_data %}
+            <div class="post-group">
+            <p><div id="text">Title: </div>{{article[0]}}</p>
+            <p><div id="text">Date: </div>{{article[1].strftime("%B %d, %Y")}}</p>
+            <p><div id="text">Topic: </div>{{article[2].title()}}</p>
+            <small>Written on by {{article[3].title()}}</small>
+            <div id="details">
+                <a href="{{ url_for('article_details', article_id=article[4]) }}">Read More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
