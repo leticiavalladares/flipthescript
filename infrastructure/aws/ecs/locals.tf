@@ -8,8 +8,10 @@ locals {
   }
 
   resource_suffix = join("-", ["ec1", "flipthescript"])
+  aws_owner_id    = "099720109477"
+  aws_ami_name    = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20220912"
 
-    subnets = [
+  subnets = [
     {
       name     = "public-snet-a"
       type     = "public"
@@ -26,7 +28,7 @@ locals {
         rtb       = "public-snet-a"
       }]
     },
-        {
+    {
       name     = "public-snet-b"
       type     = "public"
       cidr     = "10.1.11.0/24"
@@ -73,7 +75,7 @@ locals {
         dest      = "nat"
         vpc       = "external"
         rtb       = "private-snet-b"
-        }]
+      }]
     },
     {
       name     = "private-snet-c"
@@ -98,7 +100,7 @@ locals {
 
   vpcs = {
     external = {
-      cidr           = "10.1.0.0/16"
+      cidr = "10.1.0.0/16"
     }
   }
 }

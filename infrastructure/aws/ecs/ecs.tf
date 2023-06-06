@@ -47,10 +47,10 @@ resource "aws_ecs_service" "ecs_service" {
   desired_count   = 1
   launch_type     = "EC2"
 
-  network_configuration {
-    security_groups = [aws_security_group.task_sg.id]
-    subnets         = [for item in local.private_snets: aws_subnet.subnet[item].id]
-  }
+  # network_configuration {
+  #   security_groups = [aws_security_group.task_sg.id]
+  #   subnets         = [for item in local.private_snets: aws_subnet.subnet[item].id]
+  # }
 
   load_balancer {
     target_group_arn = aws_lb_target_group.lb_tgt_group.id
