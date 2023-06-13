@@ -4,7 +4,7 @@ locals {
     ManagedBy   = "Terraform"
     CostCenter  = "1"
     Application = "FlipTheScript"
-    Owner       = "leticia.valladares@cloudreach.com"
+    Owner       = "anyemail@cloudycloud.cloud"
   }
 
   resource_suffix = join("-", ["ec1", "flipthescript"])
